@@ -1,6 +1,5 @@
 package com.rideshare.matchingservice.event;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

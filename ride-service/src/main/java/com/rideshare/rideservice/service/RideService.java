@@ -136,11 +136,11 @@ public class RideService {
         return baseFare + (distance * pricePerKm);
     }
 
-    public void updateRideWithDriver(String rideId, String riderId) {
+    public void updateRideWithDriver(String rideId, String driverId) {
         Ride ride = rideRepository.findById(rideId)
                 .orElseThrow(() ->  new RuntimeException("Ride not found"));
 
-        ride.setRiderId(riderId);
+        ride.setDriverId(driverId);
         ride.setStatus(RideStatus.ACCEPTED);
         rideRepository.save(ride);
     }
@@ -148,7 +148,9 @@ public class RideService {
 
     private RideResponse mapToResponse(Ride ride) {
         RideResponse response = new RideResponse();
+        response.setId(ride.getId());
         response.setRiderId(ride.getRiderId());
+        response.setDriverId(ride.getDriverId());
         response.setPickupAddress(ride.getPickupAddress());
         response.setPickupLatitude(ride.getPickupLatitude());
         response.setPickupLongitude(ride.getPickupLongitude());
